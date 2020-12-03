@@ -10,7 +10,10 @@
     <el-button type="text" @click="open"
       ><!-- 点击打开 Message Box -->点击新建/修改项目</el-button
     >
-    <div class="mingcheng">{{ a }}</div>
+    <li class="mingcheng" v-for="i in list" :key="i">
+      <div>{{ i }}</div>
+      <button @click = 'del(i)'>删除</button>
+    </li>
   </div>
 </template>
 
@@ -18,7 +21,7 @@
 export default {
   data() {
     return {
-      a: ""
+      list: []
     }
   },
   methods: {
@@ -34,8 +37,9 @@ export default {
             type: "success",
             message: "你的项目名称是: " + value,
           });
-          this.a = value;
-          console.log(this.a);
+          // this.list = value;
+          this.list.push(value)
+          // console.log(this.a);
         })
         .catch(() => {
           this.$message({
@@ -44,6 +48,10 @@ export default {
           });
         });
     },
+    del(todo){
+      const index = this.list.findIndex(i => i.id == todo.id)
+      this.list.splice(index,1)
+    }
   },
 };
 </script>
