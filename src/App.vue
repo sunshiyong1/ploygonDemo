@@ -8,6 +8,7 @@
 
 <script>
 import Ploygon from './components/ploygon.vue'
+
 // import HelloWorld from './components/HelloWorld.vue'
 
 

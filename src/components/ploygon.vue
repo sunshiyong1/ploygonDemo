@@ -12,17 +12,20 @@
     >
     <li class="mingcheng" v-for="i in list" :key="i">
       <div>{{ i }}</div>
-      <button @click = 'del(i)'>删除</button>
+      <button @click="del(i)">删除</button>
     </li>
+
+    <DrawPolygons></DrawPolygons>
   </div>
 </template>
 
 <script>
+import DrawPolygons from "./DrawPolygon/DrawPolygons";
 export default {
   data() {
     return {
-      list: []
-    }
+      list: [],
+    };
   },
   methods: {
     open() {
@@ -39,14 +42,14 @@ export default {
           }); */
           // this.list = value;
           // this.list.push(value)
-          if(this.list.indexOf(value) == -1) {
-            this.list.push(value)
+          if (this.list.indexOf(value) == -1) {
+            this.list.push(value);
             this.$message({
-            type: "success",
-            message: "你的项目名称是: " + value,
-          });
-          }else{
-            alert('名称已存在，请换一个名称')
+              type: "success",
+              message: "你的项目名称是: " + value,
+            });
+          } else {
+            alert("名称已存在，请换一个名称");
             // type:"error"
           }
         })
@@ -61,6 +64,30 @@ export default {
       const index = this.list.findIndex(i => i.id == todo.id)
       this.list.splice(index,1)
     }
+
+    /* open() {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    }, */
+  },
+
+  components: {
+    DrawPolygons,
   },
 };
 </script>
