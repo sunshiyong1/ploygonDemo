@@ -33,13 +33,22 @@ export default {
         // inputErrorMessage: "邮箱格式不正确",
       })
         .then(({ value }) => {
-          this.$message({
+          /* this.$message({
+            type: "success",
+            message: "你的项目名称是: " + value,
+          }); */
+          // this.list = value;
+          // this.list.push(value)
+          if(this.list.indexOf(value) == -1) {
+            this.list.push(value)
+            this.$message({
             type: "success",
             message: "你的项目名称是: " + value,
           });
-          // this.list = value;
-          this.list.push(value)
-          // console.log(this.a);
+          }else{
+            alert('名称已存在，请换一个名称')
+            // type:"error"
+          }
         })
         .catch(() => {
           this.$message({

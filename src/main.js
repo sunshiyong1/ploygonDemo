@@ -6,6 +6,7 @@ import Element from 'element-ui';
 import App from './App.vue';
 import '../public/reset.css'
 
+
 Vue.use(ElementUI);
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 
